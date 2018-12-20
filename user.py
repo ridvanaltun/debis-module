@@ -1,2 +1,2 @@
-username = 'your.debis.user'
+username = 'your.debis.user.name'
 password = 'your.debis.password'
