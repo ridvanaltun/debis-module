@@ -1,0 +1,65 @@
+**TODO**
+
+ ✔ (ogrenci1.get_lesson_list(period_name)) bundan kurtulmak için bir algoritma yazmam gerekiyor. Amacım sonuç olarak ogrenci1.all_lesson_name ve ogrenci1.all_lesson_code değişkenleri üretmek. Bu değişkenleri döndürdüğümde tüm ders adları 2 boyutlu matris şeklinde dönmeli. Tüm ders adları, ders kodları ogrenci nesnesi oluşturulduğunda çekilebilir olmalı. @done (18-12-16 04:06)
+
+    ✔ dönem sayısı kadar liste içinde liste oluşturan bir kod yaz. (liste.append([])) @done (18-12-16 04:06)
+    ✔ ilgili bilgileri liste içine kaydeden döngüyü yaz. @done (18-12-16 04:06)
+
+ ✔ dersler nesne olarak yaratılsın. @done (18-12-16 04:06)
+
+ ✔ lesson class'ı altında __iter__ tanımlaması yapılmalı. @done (18-12-16 04:06)
+
+ ✘ internet bağlı mı değil mi test eden foksiyon yazilmali 
+
+    (requests exceptionları ile tespit yapılabiliyor, gerek kalmadı) @cancelled (18-12-17 01:13)
+
+ ✔ python 3.6 altı sürüm desteği için f yöntemi yerine "".format kullanılmalı @done (18-12-16 21:53)
+
+ ✔ Student nesne özelliği olarak timeout parametresi eklenmeli @done (18-12-16 23:52)
+
+ ✔ test etme yöntemi değiştirilmeli, try except ile yapılmalı Student class'ı içinde, Lesson class'ı için gerek yok çünkü hata verecek bir şey yapmıyor. @done (18-12-16 23:53)
+
+ ✔ test etmek için bir staticmethod kullanılmalı ve her request sonrası bu method çalıştırılarak page return edilmeli, page üretmek için gerekli bütün parametreler staticmethod'a gönderilsin. @done (18-12-17 01:11)
+
+ ✘ get_lesson() methodu çağrılırken bir period_payload oluşturulmalı ve ilk olarak period'a gidilmeli çünkü __init__ sonrası period son dönemde kalacaktır ve kullanıcı son dönem dışında başka bir dönemden ders nesnesi oluşturmak istediğinde hata alacaktır. 
+
+    (test edildi, önce period belirtmeden hatasız çekilebiliyor, atılan post isteğini özelleştirmeye ve karmaşık hale getirmeye gerek yok) @cancelled (18-12-18 02:36)
+
+    ✔ bu doğru mu, öncelikle bunu test et @done (18-12-18 02:36)
+
+ ✘ döküman yazdırırken self. kullanımı yerine nesne adı kullanılsın 
+
+    (bu imkansız, python içinde obje isimleri tutulmuyor sadece adresleri tutuluyor, obje isimleri kullanıcı daha rahat iş yapabilsin diye var normalde.) @cancelled (18-12-18 02:58)
+
+ ✘ space işlemi yapan satırlar method'a çevrilsin ve nesne adı kadar boşluk yapma methoduna gönderilerek işlemler gerçekleştirilsin 
+
+     (gerek yok.) @cancelled (18-12-18 02:43)
+
+ ✘ kullanıcının kullanmasına gerek olmayan, nitelik ve fonksiyonları erişime kısmak için tek alt çizgi ile kullanıcıdan gizlemeliyim. Kullanıcı: from debis import * yaptığında erişememeli 
+
+    (class bütünlüğü bozulduğu ve çok fazla alt çizgi kullanıldığı için bu entry iptal) @cancelled (18-12-18 03:05)
+
+    ✔  send_request() gizlenmeli çünkü geliştiricinin kafasını karıştırmak dışında bir işe yaramıyor. 
+        @done (18-12-18 02:37)
+
+ ✔ get_lesson()'a, lesson_name'e alternatif olarak lesson_code verilebilmeli. @done (18-12-18 04:08)
+
+ ✔ username ve password tek alt çizgi ile işaretlenip property ile salt okunur yapılmalı. @done (18-12-18 13:43)
+
+ ✘ main kod post veya get işlemi yaparken (get_lesson, kullanıcı oluşturma, get period vs) thread çalışır haldeyse durdurulmalı ve eskiden çalışır haldeyse yeniden başlatılmalı. Burada bir trick var; biz timer'u yeniden başlattığımızda otomatik olarak ilk anda request atıyor mu? HAYIR, atmıyor. DENENDİ. Yani task'ı yapmak için bir engel yok.
+
+    (kod karmaşıklığı artıyor, thread açtıktan sonra post işlemi atarken sayfanın hata verdiğini görmedim, bu yüzden gereksiz bir özellik.) @cancelled (18-12-20 04:23)
+
+ ✔ __init__ ile bir timer nesnesi yaratılmalı, sitenin timeout atmasına karşı yöntem geliştirilmeli @done (18-12-19 04:43)
+
+ ✔ ogrenci nesnesi oluştururken oluşturduğumuz öğrenci değişkenine bu ders nesnesi kopyalansın ve listelenebilsin @done (18-12-19 23:59)
+  
+ ✘ bazen hatalı gelen isteklere karşı Student class'ı içine force_repeat_count değişkeni tanımlanmalı. Kullanıcı oluştururken veya ders oluştururken isteğe bağlı olarak force=True (default force=False) parametresi alınmalı, Eğer hatalı bir request sonucu gelirse (site http hatası, internet bağlantı hatası, timeout hatası vs) Student.force_repeat_count degiskeni kadar hata sonrası tekrar giriş denenmeli, eğer hepsi başarısız olursa yapacak bir şey yok, Student.force_repeat_count değişkenini arttırın diye kullanıcıya geri dönüş yapılmalı 
+
+    (niye iptal edildi? bu çözüm yerine request exception alındığında bunu kullanıcıya raise ederek iletebiliyoruz. Yani bu özelliği artık kullanıcı kendi sağlayabilir.) @cancelled (18-12-20 14:03)
+
+ ✔ modülü bitir @done (18-12-20 14:13)
+
+ ☐ requirements.txt dosyası oluştur
+
+ ☐ readme dosyası oluştur
