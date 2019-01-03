@@ -132,7 +132,7 @@ class Student:
 		# Biz belli bir süre işlem yapmayınca site oturumumuzu otomatik sonlandırıyor.
 		elif 'D.E.Ü. Bilişim Servisleri' in page.text:
 			print('\nSession Timeout Error: Site bizi attı! İşlem başarısız!')
-			print('Geliştirici Notu: self.empty_request(5) kullanabilirsiniz. 5 -> 5 dakika (önerilen süre max 10dk) ')
+			print("Geliştirici Notu: 5-10dk gibi uzun süren işlemler için Student nesnesi oluştururken 'alive = True' argümanı kullanın. ")
 			return False
 
 		# Olasılığı çok düşük bir durum
