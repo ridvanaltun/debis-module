@@ -2,11 +2,13 @@
 
 [![PyPI version](https://badge.fury.io/py/debis.svg)](https://badge.fury.io/py/debis)
 
-Dokuz Eylül Üniversitesi'nin [DEBİS](http://debis.deu.edu.tr) sitesinden öğrenci ve ders bilgileri çekmek amacıyla hazırlanmış bir modül.
+> Dokuz Eylül Üniversitesi'nin [DEBİS](http://debis.deu.edu.tr) sitesinden öğrenci ve ders bilgileri çekmek amacıyla hazırlanmış bir modül.
 
 ## Installation
 
-> pip install debis
+```bash
+$ pip install debis
+```
 
 ## Demo
 
