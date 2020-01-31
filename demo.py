@@ -1,4 +1,4 @@
-from debis import *
+from debis import person
 import user
 
 def main():
@@ -8,7 +8,7 @@ def main():
 		#Student.show_request_errors = False
 		#Student.show_timer_errors = False
 
-		ogrenci1 = Student(user.username, user.password)
+		ogrenci1 = person.Student(user.username, user.password)
 		#ogrenci1 = Student(user.username, user.password, alive = True)
 		#ogrenci1.timer.start()
 		#print('Timer Çalışıyor Mu? : ', ogrenci1.timer.is_running)
@@ -42,7 +42,7 @@ def main():
 		#print(ogrenci1.lessons[0].credit)
 		#print(id(ogrenci1.lessons[0]))
 		#print(id(ders1))
-		
+
 		print('\n#### DERS BILGILERI\n')
 		for x in ders1:
 			print(x)

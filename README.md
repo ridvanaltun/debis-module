@@ -4,11 +4,7 @@ Dokuz Eylül Üniversitesi'nin [DEBİS](http://debis.deu.edu.tr) sitesinden öğ
 
 ## Installation
 
-> git clone https://github.com/ridvanaltun/debis-module.git
-
-> cd debis-module/
-
-> pip install -r requirements.txt
+> pip install debis
 
 ## Demo
 
@@ -19,22 +15,24 @@ Dokuz Eylül Üniversitesi'nin [DEBİS](http://debis.deu.edu.tr) sitesinden öğ
     username = 'ridvan.altun'
     password = 'benimgüzelsifrem'
 
-2. *main.py* dosyasını açıp 33. satırı kendinize uydurun.
+2. *demo.py* dosyasını açıp [33](https://github.com/ridvanaltun/debis-module/blob/master/demo.py#L33). satırı kendinize uydurun.
 
 3. Son olarak demo'yu çalıştırın.
 
-> python main.py
+> python demo.py
 
 4. Örnek çıktı:
 
-![alt text](https://github.com/ridvanaltun/debis-module/blob/master/source/example.png?raw=true "Çıktı")
+![alt text](https://github.com/ridvanaltun/debis-module/blob/master/images/example.png?raw=true "Çıktı")
 
 ## Usage
 
 ### Kütüphaneyi Projeye Eklemek:
 
 ```python
-from  debis import *
+from  debis import person
+
+# logic..
 ```
 
 ### Ön Ayarlar:
@@ -46,7 +44,7 @@ Kütüphaneyi kullanmaya başlamadan önce yapabileceğimiz ön ayarlar.
 Bu kütüphaneyi ilk defa kullanacak kullanıcılar için bu kısmın kullanılması tavsiye edilmez, oluşan hataları görmek için bu kısmı atlamanız tavsiye edilir.
 
 ```python
-# request (istek) esnasında oluşan hataları bildir, default: True 
+# request (istek) esnasında oluşan hataları bildir, default: True
 Student.show_timer_errors = False
 ```
 
@@ -57,14 +55,14 @@ Student.show_timer_errors = False
 - başlayıp kısa sürede biten işlemler için (normal bir şekilde)
 - uzun süren işlemler için
 
-Uzun süren işlemler için ayrı bir yöntemin geliştirilmesinin nedeni Debis sitesinin belirli bir süre işlem yapmayınca connection timeout ile otomatik olarak oturumumuzu sonlandırmasıdır ki bu yöntem sadece nadir senaryolarda kullanılıyor, kafanız karışmasın.
+Uzun süren işlemler için ayrı bir yöntem geliştirilmesinin nedeni Debis sitesinin belirli bir süre kadar işlem yapmayınca 'connection timeout' ile otomatik olarak oturumu sonlandırmasıdır ki bu yöntem sadece nadir senaryolarda kullanılıyor, kafanız karışmasın.
 
 #### Normal Bir Şekilde Öğrenci Nesnesi Oluşturmak
 
 ```python
 try:
 
-ogrenci1 = Student('username', 'password')
+ogrenci1 = person.Student('username', 'password')
 
 ### more codes..
 
@@ -78,9 +76,9 @@ except:
 try:
 
 # timer çalışma esnasında oluşan hataları gösterme, default: True
-Student.show_request_errors = False
+person.Student.show_request_errors = False
 
-ogrenci1 = Student('username', 'password', alive = True)
+ogrenci1 = person.Student('username', 'password', alive = True)
 
 # connection timeout olmasın diye bir thread baslatiliyor
 ogrenci1.timer.start()
@@ -175,7 +173,7 @@ print(id(ogrenci1.lessons[0]))
 print(id(ders1))
 
 print('\n#### DERS BILGILERI\n')
-        
+
 # ders hakkında bilgileri toplu bir sekilde yazdiriyoruz
 for x in ders1:
    print(x)
